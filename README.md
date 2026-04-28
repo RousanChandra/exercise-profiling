@@ -19,7 +19,7 @@ After Optimize:
 <img width="1904" height="937" alt="Screenshot 2026-04-28 195844" src="https://github.com/user-attachments/assets/131107e0-16ba-40dc-9132-076502d049f8" />
 <img width="1919" height="1038" alt="Screenshot 2026-04-28 200711" src="https://github.com/user-attachments/assets/82f25622-404a-4e61-b0d3-6518391e2d22" />
 
-**Conclusion**
+### Conclusion
 Setelah melakukan profiling dan pengujian menggunakan JMeter, saya melakukan beberapa optimasi pada kode sumber untuk meningkatkan performa aplikasi. Berikut adalah perbandingannya:
 
 - Endpoint /all-student:
@@ -34,7 +34,7 @@ Sebelumnya, aplikasi mengambil seluruh data mahasiswa ke memori Java untuk kemud
 Kesimpulan:
 Berdasarkan hasil pengujian JMeter, optimasi ini berhasil menurunkan durasi respons secara signifikan. Perubahan yang dilakukan tidak hanya sekadar membuat aplikasi berjalan lebih cepat, tetapi juga mengurangi beban kerja database dan penggunaan memori pada JVM. Dengan strategi ini, aplikasi menjadi lebih scalable dan efisien dalam menangani request dari pengguna.
 
-
+### Reflection
 1. Apa perbedaan pendekatan pengujian performa dengan JMeter dan profiling dengan IntelliJ Profiler dalam konteks optimasi performa aplikasi?
 JMeter digunakan untuk black-box testing (pengujian dari luar). Fokusnya adalah mensimulasikan beban pengguna (seperti 10 atau 100 user secara bersamaan) untuk melihat bagaimana aplikasi merespons dari sisi throughput dan response time (seberapa cepat aplikasi membalas request).
 IntelliJ Profiler digunakan untuk white-box testing (pengujian dari dalam). Fokusnya adalah melihat ke dalam kode sumber, memantau penggunaan CPU, memori, dan durasi eksekusi tiap method. Ini membantu kita menemukan baris kode mana yang spesifik menjadi penyebab aplikasi menjadi lambat.
