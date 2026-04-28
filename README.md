@@ -6,3 +6,6 @@ Test Plan Screenshoot via Command line
 <img width="1648" height="618" alt="image" src="https://github.com/user-attachments/assets/f4213fe1-480d-4fa7-803f-71c62463830c" />
 <img width="1509" height="693" alt="image" src="https://github.com/user-attachments/assets/187bf411-95b0-452b-8d9e-a7c09a02b1c0" />
 <img width="1495" height="624" alt="image" src="https://github.com/user-attachments/assets/5309ba62-5c61-414c-b7b9-b8fec47691d3" />
+
+## Conclusion
+Berdasarkan hasil pengujian performa, terdapat peningkatan performa yang signifikan setelah refactoring kode. Waktu pemrosesan untuk endpoint telah berkurang lebih dari 20%, yang menegaskan bahwa pengoptimalan kueri basis data (penyelesaian masalah kueri N+1) dan peningkatan manipulasi string secara signifikan meningkatkan responsivitas aplikasi.
