@@ -28,25 +28,16 @@ public class StudentService {
     }
 
     public Optional<Student> findStudentWithHighestGpa() {
-        List<Student> students = studentRepository.findAll();
-        Student highestGpaStudent = null;
-        double highestGpa = 0.0;
-        for (Student student : students) {
-            if (student.getGpa() > highestGpa) {
-                highestGpa = student.getGpa();
-                highestGpaStudent = student;
-            }
-        }
-        return Optional.ofNullable(highestGpaStudent);
+        return Optional.ofNullable(studentRepository.findTopByOrderByGpaDesc());
     }
 
     public String joinStudentNames() {
         List<Student> students = studentRepository.findAll();
-        String result = "";
+        StringBuilder sb = new StringBuilder();
         for (Student student : students) {
-            result += student.getName() + ", ";
+            sb.append(student.getName()).append(", ");
         }
-        return result.substring(0, result.length() - 2);
+        return sb.length() > 2 ? sb.substring(0, sb.length() - 2) : "";
     }
 }
 

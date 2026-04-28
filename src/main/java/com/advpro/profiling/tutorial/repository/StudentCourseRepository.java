@@ -14,9 +14,11 @@ import java.util.List;
 
 @Repository
 public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long> {
-    // Tambahkan ini biar langsung ambil semua data dengan JOIN (eager loading)
+
     @Query("SELECT sc FROM StudentCourse sc JOIN FETCH sc.student JOIN FETCH sc.course")
     List<StudentCourse> findAllWithStudentAndCourse();
 
     List<StudentCourse> findByStudentId(Long studentId);
+
+
 }
