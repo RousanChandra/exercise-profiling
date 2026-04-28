@@ -1,3 +1,8 @@
+Test Plan Screenshoot via GUI
 <img width="1919" height="645" alt="image" src="https://github.com/user-attachments/assets/47f73447-1ad4-41aa-a3ca-53178a6db246" />
 <img width="1916" height="534" alt="image" src="https://github.com/user-attachments/assets/feb2dd54-7219-4739-a8f3-20ff14b1d608" />
 <img width="1919" height="664" alt="image" src="https://github.com/user-attachments/assets/14dca25e-caf1-460b-b976-6809b04e4fb4" />
+Test Plan Screenshoot via Command line
+<img width="1648" height="618" alt="image" src="https://github.com/user-attachments/assets/f4213fe1-480d-4fa7-803f-71c62463830c" />
+<img width="1509" height="693" alt="image" src="https://github.com/user-attachments/assets/187bf411-95b0-452b-8d9e-a7c09a02b1c0" />
+<img width="1495" height="624" alt="image" src="https://github.com/user-attachments/assets/5309ba62-5c61-414c-b7b9-b8fec47691d3" />
