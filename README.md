@@ -19,15 +19,16 @@ After Optimize:
 <img width="1904" height="937" alt="Screenshot 2026-04-28 195844" src="https://github.com/user-attachments/assets/131107e0-16ba-40dc-9132-076502d049f8" />
 <img width="1919" height="1038" alt="Screenshot 2026-04-28 200711" src="https://github.com/user-attachments/assets/82f25622-404a-4e61-b0d3-6518391e2d22" />
 
+**Conclusion**
 Setelah melakukan profiling dan pengujian menggunakan JMeter, saya melakukan beberapa optimasi pada kode sumber untuk meningkatkan performa aplikasi. Berikut adalah perbandingannya:
 
-Endpoint /all-student:
+- Endpoint /all-student:
 Sebelumnya, method getAllStudentsWithCourses mengalami masalah N+1 Query, di mana aplikasi melakukan query ke database berulang kali untuk setiap baris data. Saya mengatasinya dengan menggunakan JOIN FETCH pada repository, sehingga data mahasiswa dan kursus dapat diambil sekaligus dalam satu eksekusi query yang efisien.
 
-Endpoint /all-student-name:
+- Endpoint /all-student-name:
 Pada bagian joinStudentNames, sebelumnya aplikasi melakukan penggabungan string menggunakan operator += di dalam looping. Hal ini menyebabkan tingginya penggunaan memori karena terciptanya banyak objek string baru. Saya menggantinya dengan StringBuilder yang secara signifikan mengurangi beban kerja garbage collector dan mempercepat waktu pemrosesan.
 
-Endpoint /highest-gpa:
+- Endpoint /highest-gpa:
 Sebelumnya, aplikasi mengambil seluruh data mahasiswa ke memori Java untuk kemudian dicari GPA tertingginya melalui looping manual. Ini tidak efisien terutama jika jumlah data mahasiswa terus bertambah. Saya mengubah logika tersebut dengan mengandalkan perintah SQL (ORDER BY gpa DESC LIMIT 1) di sisi database, sehingga aplikasi hanya menerima satu data mahasiswa yang memang paling relevan.
 
 Kesimpulan:
