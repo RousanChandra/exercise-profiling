@@ -22,3 +22,25 @@ After Optimize:
 
 ## Conclusion
 Berdasarkan hasil pengujian performa, terdapat peningkatan performa yang signifikan setelah refactoring kode. Waktu pemrosesan untuk endpoint telah berkurang lebih dari 20%, yang menegaskan bahwa pengoptimalan kueri basis data (penyelesaian masalah kueri N+1) dan peningkatan manipulasi string secara signifikan meningkatkan responsivitas aplikasi.
+
+1. Apa perbedaan pendekatan pengujian performa dengan JMeter dan profiling dengan IntelliJ Profiler dalam konteks optimasi performa aplikasi?
+JMeter digunakan untuk black-box testing (pengujian dari luar). Fokusnya adalah mensimulasikan beban pengguna (seperti 10 atau 100 user secara bersamaan) untuk melihat bagaimana aplikasi merespons dari sisi throughput dan response time (seberapa cepat aplikasi membalas request).
+IntelliJ Profiler digunakan untuk white-box testing (pengujian dari dalam). Fokusnya adalah melihat ke dalam kode sumber, memantau penggunaan CPU, memori, dan durasi eksekusi tiap method. Ini membantu kita menemukan baris kode mana yang spesifik menjadi penyebab aplikasi menjadi lambat.
+
+2. Bagaimana proses profiling membantu Anda dalam mengidentifikasi dan memahami titik lemah (weak points) dalam aplikasi Anda?
+Proses profiling membantu memvisualisasikan alur eksekusi aplikasi menggunakan Flame Graph dan Method List. Dengan ini, saya bisa melihat secara langsung method mana yang memiliki waktu eksekusi paling lama (bottleneck). Dalam kasus aplikasi ini, saya jadi tahu bahwa penggunaan looping untuk query database (masalah N+1) adalah penyebab utama lambatnya aplikasi.
+
+3. Apakah menurut Anda IntelliJ Profiler efektif dalam membantu Anda menganalisis dan mengidentifikasi bottleneck dalam kode aplikasi?
+Ya, sangat efektif. Tanpa profiler, kita hanya bisa menebak-nebak bagian mana yang lemot. Dengan profiler, data yang disajikan sangat akurat, mulai dari CPU time, execution time, hingga call tree, sehingga perbaikan kode bisa dilakukan dengan presisi tinggi.
+
+4. Apa tantangan utama yang Anda hadapi saat melakukan pengujian performa dan profiling, dan bagaimana Anda mengatasinya?
+Tantangan utamanya adalah konsistensi hasil tes. Kadang hasil profiling berbeda-beda karena faktor latar belakang proses OS yang berjalan. Cara mengatasinya adalah dengan memastikan aplikasi di-run beberapa kali (warm-up) agar JIT compiler JVM bekerja optimal, serta menutup aplikasi lain yang tidak diperlukan agar sumber daya CPU lebih fokus ke aplikasi yang dites.
+
+5. Apa manfaat utama yang Anda peroleh dari penggunaan IntelliJ Profiler untuk melakukan profiling kode aplikasi?
+Manfaat utamanya adalah kita bisa mengoptimasi kode berdasarkan data nyata (data-driven optimization), bukan asumsi. Kita jadi belajar teknik refactoring yang benar, seperti mengganti N+1 query menjadi Join Fetch dan mengganti string concatenation yang tidak efisien dengan StringBuilder.
+
+6. Bagaimana Anda menangani situasi di mana hasil profiling dengan IntelliJ Profiler tidak sepenuhnya konsisten dengan temuan dari pengujian performa menggunakan JMeter?
+Jika hasil tidak konsisten, saya akan menganalisis di mana letak perbedaannya. Profiling fokus pada internal logic kode, sedangkan JMeter juga dipengaruhi faktor jaringan (network latency), koneksi database pool, dan load pada sistem operasi. Saya akan melakukan kalibrasi dengan menjalankan tes beberapa kali dan mengambil rata-ratanya untuk mendapatkan hasil yang representatif.
+
+7. Strategi apa yang Anda terapkan dalam mengoptimasi kode aplikasi setelah menganalisis hasil pengujian performa dan profiling? Bagaimana Anda memastikan perubahan yang Anda buat tidak mempengaruhi fungsionalitas aplikasi?
+Strategi yang saya terapkan adalah: 1) Optimasi query database (mengurangi jumlah query ke database), 2) Optimasi manajemen memori (menggunakan StringBuilder), dan 3) Menggunakan sorting di sisi database alih-alih di sisi aplikasi. Untuk memastikan fungsionalitas tetap terjaga, saya melakukan pengecekan data di browser untuk memastikan hasil output tetap sama sebelum dan sesudah optimasi.
