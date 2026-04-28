@@ -1,4 +1,4 @@
-<img width="1904" height="937" alt="Screenshot 2026-04-28 195844" src="https://github.com/user-attachments/assets/ff167fff-33a5-4a12-aef0-0ca17069ebba" />
+
 Test Plan Screenshoot via GUI
 <img width="1919" height="645" alt="image" src="https://github.com/user-attachments/assets/47f73447-1ad4-41aa-a3ca-53178a6db246" />
 <img width="1916" height="534" alt="image" src="https://github.com/user-attachments/assets/feb2dd54-7219-4739-a8f3-20ff14b1d608" />
